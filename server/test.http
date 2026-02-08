@@ -1,0 +1,55 @@
+### 1. Login Admin
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "employeeCode": "ADMIN001",
+  "password": "123456"
+}
+
+### 2. Login BT (Bí thư)
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "employeeCode": "00040280",
+  "password": "123456"
+}
+
+### 3. Login PBT (Phó Bí thư)
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "employeeCode": "00040300",
+  "password": "123456"
+}
+
+### 4. Login CU (Chi ủy)
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "employeeCode": "00050593",
+  "password": "123456"
+}
+
+### 5. Test Admin route (thay TOKEN_ADMIN)
+GET http://localhost:4000/api/test/admin-only
+Authorization: Bearer TOKEN_ADMIN
+
+### 6. Test BT route (thay TOKEN_BT)
+GET http://localhost:4000/api/test/bt-only
+Authorization: Bearer TOKEN_BT
+
+### 7. Test Dashboard (BT/PBT đều vào được)
+GET http://localhost:4000/api/test/dashboard
+Authorization: Bearer TOKEN_BT_OR_PBT
+
+### 8. Test CU cố vào route Admin (should fail 403)
+GET http://localhost:4000/api/test/admin-only
+Authorization: Bearer TOKEN_CU
+
+### 9. Get user info
+GET http://localhost:4000/api/auth/me
+Authorization: Bearer YOUR_TOKEN
